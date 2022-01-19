@@ -38,7 +38,6 @@ const Profile = () => {
 
   const p = useParams();
 
-  // console.log(p,"<<<<<<<<<<<<<<<<<<");
 
   const state = useSelector((state) => {
     return state;
