@@ -1,0 +1,94 @@
+.containerHome {
+  background-color: rgb(119, 154, 185);
+  z-index: -1;
+}
+.c1 {
+  padding-top: 40px;
+  padding: 80px;
+}
+.app-text {
+  width: 50%;
+  float: right;
+  padding-top: 100px;
+}
+.app-text h1 {
+  text-align: center;
+  width: 70%;
+}
+.app-text h5 {
+  font-size: 25px;
+  width: 70%;
+  text-align: center;
+}
+.app-picture {
+  position: relative;
+  left: 0%;
+  padding-top: 20px;
+  padding: 0;
+}
+
+.grid-containerInqHome {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 20px;
+  padding-bottom: 20px;
+  padding-left: 60px;
+}
+
+.grid-containerInqHome > div {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 20px;
+  font-size: 25px;
+  width: 25rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.clickTite:hover {
+  color: rgb(91, 129, 166);
+}
+
+.lastInq {
+  font-size: 40px;
+  text-align: right;
+  padding: 50px;
+  margin-right: 30px;
+}
+
+.grid-containerHome {
+  margin-bottom: 0px;
+  padding: 100px;
+  /*  */
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 20px;
+  padding-left: 100px;
+  padding-top: 0;
+}
+.grid-containerHome > div {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 25px;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.grid-containerHome > img {
+  height: 100vh;
+  background-color: black;
+}
+
+.containerHome-two {
+  background-color: white;
+}
+
+.grid-post {
+  display: grid;
+  grid-template-columns: 50% 30%;
+  grid-gap: 50px;
+  padding: 10px;
+  border-top: 1px solid black;
+}
+
+.grid-post button {
+  background-color: white;
+  border: none;
+}

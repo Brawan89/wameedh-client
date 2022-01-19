@@ -1,0 +1,64 @@
+.grid-profile {
+  margin-bottom: 0px;
+  padding: 80px;
+  display: grid;
+  grid-template-columns: 20% 30% 50%;
+
+  /* grid-gap: 10px; */
+}
+.grid-profile > div {
+  /* padding: 10px; */
+  font-size: 25px;
+  width: 100%;
+  background-color: white; 
+
+}
+
+/* .Right-side { */
+  /* border: 10px solid rgb(119, 154, 185); */
+  /* background-color: white; */
+  /* box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 9px 0 rgba(0, 0, 0, 0.19); */
+/* } */
+
+.Left-side button {
+  width: 45%;
+  margin-top: 7px;
+  background-color: rgb(119, 154, 185);
+  color: white;
+  font-size: 20px;
+}
+.Left-side button:hover {
+  box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 9px 0 rgba(0, 0, 0, 0.19);
+  font-size: 22px;
+}
+
+.Left-side {
+  padding-top: 40px;
+  text-align: right;
+  width: 100%;
+}
+.imgAvProf {
+  width: 60%;
+  height: 500px;
+  padding-top: 15px;
+}
+
+/*  */
+.edit {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: 250vh;
+  background-color: rgb(243,243,243);
+  text-align: right;
+  z-index: 2;
+}
+.editPost {
+  width: 100%;
+  padding: 40px;
+  gap: 20px;
+}
+.editPost input {
+  width: 100%;
+  height: 70px;
+}

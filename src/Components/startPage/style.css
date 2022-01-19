@@ -1,0 +1,33 @@
+.containerStart{
+  width: 100%;
+  height: 100vh;
+  background-image: url("./../../../public/img/background2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.centerBackground {
+  position: absolute;
+  top: 25%;
+  left: 23%;
+  width: 30%;
+  font-size: 20px;
+  transform: translate(-20%, -20%);
+  color: black;
+  background-color: rgb(255, 255, 255);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.centerBackground span {
+  /* background-color: rgb(132, 140, 171); */
+  /* color: black;*/
+  font-size: 17px; 
+}
+
+.containBackground {
+  margin: 0;
+  /* width: 100%; */
+
+}
+
