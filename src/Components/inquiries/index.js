@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./../Navbar";
 import axios from "axios";
 import "./style.css";
-import Footer from "./../Footer";
 import { useSelector } from "react-redux";
 import Search from "../search";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +15,7 @@ const Inquiries = () => {
 
   useEffect(() => {
     getAllInquiries();
+    // eslint-disable-next-line
   }, []);
 
   const getAllInquiries = async () => {
@@ -75,7 +74,7 @@ const Inquiries = () => {
           {inquiries.map((item) => (
               <div key={item._id}>
                 {state.Login.user.role === "61c05aad3708bf224ada4791" ||
-                item.user?._id == state.Login.user._id ? (
+                item.user?._id === state.Login.user._id ? (
                   <p
                     style={{
                       float: "right",

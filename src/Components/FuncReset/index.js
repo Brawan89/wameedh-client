@@ -38,6 +38,7 @@ const ResetPass = () => {
 
   useEffect(() => {
     resetToken();
+    // eslint-disable-next-line
   }, []);
 
   const reset = async (e) => {

@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 
@@ -15,6 +13,7 @@ const Home = () => {
   useEffect(() => {
     getAllInquiries();
     getAllPosts();
+    // eslint-disable-next-line
   }, []);
 
   const state = useSelector((state) => {
@@ -63,7 +62,8 @@ const Home = () => {
             </h5>
           </div>
           <div className="app-picture">
-            <img style={{ width: "580px" }} src="./img/image31.png" />
+            <img style={{ width: "580px" }} src="./img/image31.png"
+            alt="backImg" />
           </div>
         </div>
       </div>
@@ -112,7 +112,8 @@ const Home = () => {
               </h5>
             </div>
             <div className="app-picture">
-              <img style={{ width: "580px" }} src="./img/image4.jpg" />
+              <img style={{ width: "580px" }} src="./img/image4.jpg"
+              alt="back2Img" />
             </div>
           </div>
         </div>
@@ -129,6 +130,7 @@ const Home = () => {
                     <img
                       style={{ width: "100%", height: "250px" }}
                       src={i.image}
+                      alt="postImg"
                     />
                     <h3
                       className="clickTite"
