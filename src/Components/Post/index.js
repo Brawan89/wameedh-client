@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Navbar";
 import axios from "axios";
 import "./style.css";
-import Footer from "../Footer";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-import {
-  AiOutlineInstagram,
-  AiOutlineTwitter,
-  AiFillFacebook,
-  AiOutlineMessage,
-} from "react-icons/ai";
-
 const Post = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
   const [post, setPost] = useState([]);
   const [edit, setEdit] = useState(false);
-  const [user, setUser] = useState([]);
 
   const state = useSelector((state) => {
     return state;
@@ -32,6 +21,7 @@ const Post = () => {
     getOnePost();
     getOneUser();
     getServiceProvider();
+    // eslint-disable-next-line
   }, []);
 
   const getOnePost = async () => {
@@ -65,7 +55,7 @@ const Post = () => {
   const updatPost = async (e) => {
     e.preventDefault();
     // console.log(e.target.title.value);
-    const result = await axios.put(
+        await axios.put(
       `${process.env.REACT_APP_BASE_URL}/updatePost/${id}`,
       {
         title: e.target.title.value,
@@ -104,7 +94,7 @@ const Post = () => {
 
   //get all service providers
   const getServiceProvider = async () => {
-    const result = await axios.get(
+    await axios.get(
       `${process.env.REACT_APP_BASE_URL}/getServiceProvider`,
       {
         headers: {
@@ -113,7 +103,7 @@ const Post = () => {
       }
     );
     // console.log(result.data);
-    setUser(result.data);
+    
   };
 
   return (
@@ -125,13 +115,14 @@ const Post = () => {
               <Carousel>
                 {item.image.map((img) => (
                   <div key={item._id} style={{ height: "480px" }}>
-                    <img src={img} />
+                    <img src={img}
+                    alt="posttsImg" />
                   </div>
                 ))}
               </Carousel>
 
               <div>
-                {item.user._id == state.Login.user._id ? (
+                {item.user._id === state.Login.user._id ? (
                   <>
                     <p
                       onClick={() => setEdit(true)}

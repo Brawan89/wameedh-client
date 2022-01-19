@@ -127,6 +127,7 @@ const Inquiry = () => {
     getOneInquiry();
     getOneUser();
     getAllComment();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -183,7 +184,7 @@ const Inquiry = () => {
                   }}
                 >
                   {item.title}
-                  {item.user._id == state.Login.user._id ? (
+                  {item.user._id === state.Login.user._id ? (
                     <>
                       <p
                         onClick={() => setEdit(true)}

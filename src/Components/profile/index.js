@@ -222,8 +222,7 @@ const Profile = () => {
 
   const addNewPost = async () => {
     // console.log(url);
-    if (url) {
-      const result = await axios.post(
+    if (url) { await axios.post(
         `${process.env.REACT_APP_BASE_URL}/addpost`,
         {
           title,
@@ -248,8 +247,7 @@ const Profile = () => {
   //add inquiry
   const addNewInquiry = async () => {
     console.log(url);
-    if (url) {
-      const result = await axios.post(
+    if (url) { await axios.post(
         `${process.env.REACT_APP_BASE_URL}/addinquiry`,
         {
           title,
@@ -283,6 +281,7 @@ const Profile = () => {
     getOneUser();
     getUserPost();
     getUserInquiry();
+    // eslint-disable-next-line
   }, [p]);
 
   //
@@ -294,7 +293,7 @@ const Profile = () => {
 
           {/* left  */}
           <div className="Left-sideProf" style={{ paddingRight: "40px" }}>
-            {user[0]?._id == state.Login.user._id ? (
+            {user[0]?._id === state.Login.user._id ? (
               <>
                 <h6 style={{ float: "left" , cursor: "pointer" }} onClick={() => setEdit(true)}>
                   ⚙️
@@ -314,7 +313,7 @@ const Profile = () => {
             <h6>{user[0]?.Phone_Number} :رقم الجوال</h6>
             <br />
             {state.Login.user.role !== "61c05aad3708bf224ada4791" &&
-            user[0]?._id == state.Login.user._id ? (
+            user[0]?._id === state.Login.user._id ? (
               <>
                 <button
                   style={{ cursor: "pointer" }}
@@ -328,7 +327,7 @@ const Profile = () => {
             )}
             <br />
             {state.Login.user.role === "61c4375564bde5690cdb68d0" &&
-            user[0]?._id == state.Login.user._id ? (
+            user[0]?._id === state.Login.user._id ? (
               <button
                 style={{ cursor: "pointer", marginBottom: "20px" }}
                 onClick={() => setAddPost(true)}
@@ -369,9 +368,10 @@ const Profile = () => {
                 <img
                   style={{ width: "100%", height: "250px" }}
                   src={item.image}
+                  alt="postImg"
                 ></img>
-                {state.Login.user.role == "61c05aad3708bf224ada4791" ||
-                item.user == state.Login.user._id ? (
+                {state.Login.user.role === "61c05aad3708bf224ada4791" ||
+                item.user === state.Login.user._id ? (
                   <h1
                     style={{
                       float: "right",
@@ -417,7 +417,7 @@ const Profile = () => {
             <>
               <div key={item._id}>
               {state.Login.user.role === "61c05aad3708bf224ada4791" ||
-                item.user == state.Login.user._id ? (
+                item.user === state.Login.user._id ? (
                   <p
                     style={{
                       float: "right",

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ import { LogT } from "./../../reducer/signIn";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState([]);
 
   const state = useSelector((state) => {
     return state;
@@ -84,6 +83,7 @@ const Navbar = () => {
               justifySelf: "flex-end",
               marginTop: "10px",
             }}
+            alt="navImg"
           />
         </NavLink>
       </div>

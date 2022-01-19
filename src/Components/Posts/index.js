@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./../Navbar";
 import axios from "axios";
 import "./style.css";
-import Footer from "./../Footer";
 import { useSelector } from "react-redux";
 import Search from "../search";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +14,7 @@ const Posts = () => {
   });
   useEffect(() => {
     getAllPosts();
+    // eslint-disable-next-line
   }, []);
 
   const getAllPosts = async () => {
@@ -72,9 +71,10 @@ const Posts = () => {
               <img
                 style={{ width: "100%", height: "250px" }}
                 src={item.image}
-              ></img>
-              {state.Login.user.role == "61c05aad3708bf224ada4791" ||
-                item.user == state.Login.user._id ? (
+                alt="postsImg"
+              />
+              {state.Login.user.role === "61c05aad3708bf224ada4791" ||
+                item.user === state.Login.user._id ? (
                   <h1
                     style={{
                       float: "right",

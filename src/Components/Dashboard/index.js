@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import Search from "../search";
@@ -17,6 +15,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getAllUsers();
+    // eslint-disable-next-line
   }, []);
 
   //get all users
@@ -103,6 +102,7 @@ const Dashboard = () => {
                   marginBottom: "20px",
                 }}
                 src={item.avatar}
+                alt="avatImg"
               />
 
               <h5
