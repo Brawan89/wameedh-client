@@ -1,0 +1,24 @@
+.grid-containerService {
+  margin-bottom: 20px;
+  padding: 100px;
+  /*  */
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 20px;
+  padding-bottom: 20px;
+  padding-left: 60px;
+}
+
+.grid-containerService > div {
+  background-color: rgb(255, 255, 255);
+  text-align: right;
+  padding: 20px;
+  padding-right: 50px;
+  font-size: 25px;
+  width: 25rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.clickTite:hover {
+  color: rgb(91, 129, 166);
+}
