@@ -4,6 +4,8 @@ import "./style.css";
 import { useSelector } from "react-redux";
 import Search from "../search";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 const Inquiries = () => {
   const [inquiries, setInquiries] = useState([]);
@@ -48,8 +50,30 @@ const Inquiries = () => {
   };
 
   //delete inquiry
-  const deleteInquiry = async (id) => {
-    try {
+  const deleteInquiry =  async(id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
       await axios.delete(
         `${process.env.REACT_APP_BASE_URL}/deleteInquiry/${id}`,
         {
@@ -59,11 +83,22 @@ const Inquiries = () => {
         }
       );
       deleteInquiry(state.Login.token);
-    } catch (error) {
-      // console.log(error);
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error'
+      )
     }
-    window.location.reload(false);
+  })
+   
+    // window.location.reload(false);
+ 
   };
+ 
 
   return (
     <>

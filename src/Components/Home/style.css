@@ -30,8 +30,9 @@
 .grid-containerInqHome {
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  grid-gap: 20px;
-  padding-bottom: 20px;
+  grid-gap: 10px;
+  padding-bottom: 10px;
+ 
   padding-left: 60px;
 }
 
@@ -92,3 +93,14 @@
   background-color: white;
   border: none;
 }
+  /* For desktop: */
+/* @media only screen and (min-width: 768px) {
+  .containerHome {width: 100%;}
+  .c1 {width: 100%;}
+  .app-text {width: 50%;}
+  .app-picture {width: 50%;}
+  .grid-containerInqHome {width: 100%;}
+  .grid-containerHome {width: 100%;}
+  .grid-post {width: 100%;}
+} */
+
