@@ -60,18 +60,18 @@ const Inquiries = () => {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'هل انت متأكد من حذف الاسفسار؟',
+      text: "!لن تتمكن من التراجع عن هذا",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
+      confirmButtonText: 'حذف',
+      cancelButtonText: 'الغاء',
       reverseButtons: true
     }).then(async(result) => {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'تم الحذف',
+          'تم حذف اسفسارك',
           'success'
         )
       await axios.delete(
@@ -88,8 +88,8 @@ const Inquiries = () => {
       result.dismiss === Swal.DismissReason.cancel
     ) {
       swalWithBootstrapButtons.fire(
-        'Cancelled',
-        'Your imaginary file is safe :)',
+        'الغاء',
+        'استفسارك بأمان (:',
         'error'
       )
     }
