@@ -63,6 +63,8 @@ const Post = () => {
         dec: e.target.dec.value,
         price: e.target.price.value,
         workingTime: e.target.workingTime.value,
+        delivery: e.target.delivery.value,
+
       },
       {
         headers: {
@@ -144,12 +146,29 @@ const Post = () => {
                 <h4>{item.dec}</h4>
                 <h5>السعر: {item.price} ريال</h5>
                 <h5> مدة العمل {item.workingTime} </h5>
+                <h5>التوصيل: {item.delivery}</h5>
                 <h5
                   className="userName"
                   onClick={() => navigate(`/profile/${item.user._id}`)}
                 >
                   صاحب المشروع: {item.user.userName}
                 </h5>
+                <h4>:للطلب</h4>
+                <a
+              href={`https://wa.me/${item.user.Phone_Number}`}
+              className="whatsapp_Icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {/* <p className=" fa whatsapp-num">{item.user.Phone_Number}</p> */}
+
+              <i className="fa fa-whatsapp whatsapp-icon"></i>
+            </a>
+         
+            <a href={`mailto:${item.user.Email}`} className="email_Icon">
+              {/* <p className="fa em">{item.user.Email}</p> */}
+              <i className="fa fa-envelope"></i>
+            </a>
               </div>
 
               {/* {item.image.map((img) => (
@@ -336,6 +355,22 @@ const Post = () => {
                       :مدة العمل
                     </label>
                   </div>
+                  <div className="input">
+                    <input
+                      style={{ textAlign: "right" }}
+                      className="input-field"
+                      type="text"
+                      name="delivery"
+                      defaultValue={item.delivery}
+                    />
+                    <label
+                      style={{ color: "rgb(19,82,139)", fontSize: "20px" }}
+                    >
+                      : التوصيل
+                    </label>
+
+                  </div>
+                  {/* delivery */}
 
                   {/* {updatedimg.map((img) => (
                       <div key={item._id}

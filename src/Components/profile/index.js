@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { storage } from "./../Firebase";
 import Swal from "sweetalert2";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Profile = () => {
   //get user in profile...
@@ -37,7 +38,6 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const p = useParams();
-
 
   const state = useSelector((state) => {
     return state;
@@ -124,7 +124,7 @@ const Profile = () => {
 
   // edit profile
   const updateUser = async (e) => {
-    console.log(user[0].avatar);
+    // console.log(user[0].avatar);
     e.preventDefault();
     const result = await axios.put(
       `${process.env.REACT_APP_BASE_URL}/update_user`,
@@ -149,8 +149,6 @@ const Profile = () => {
   };
   // window.location.reload(false);
 
-
-
   //delete post
   const deletePost = async (id) => {
     try {
@@ -164,11 +162,10 @@ const Profile = () => {
       // console.log(error);
     }
     window.location.reload(false);
-
   };
 
-   //delete inquiry
-   const deleteInquiry = async (id) => {
+  //delete inquiry
+  const deleteInquiry = async (id) => {
     try {
       await axios.delete(
         `${process.env.REACT_APP_BASE_URL}/deleteInquiry/${id}`,
@@ -221,7 +218,8 @@ const Profile = () => {
 
   const addNewPost = async () => {
     // console.log(url);
-    if (url) { await axios.post(
+    if (url) {
+      await axios.post(
         `${process.env.REACT_APP_BASE_URL}/addpost`,
         {
           title,
@@ -246,7 +244,8 @@ const Profile = () => {
   //add inquiry
   const addNewInquiry = async () => {
     console.log(url);
-    if (url) { await axios.post(
+    if (url) {
+      await axios.post(
         `${process.env.REACT_APP_BASE_URL}/addinquiry`,
         {
           title,
@@ -286,6 +285,7 @@ const Profile = () => {
   //
   return (
     <>
+      {/* {console.log("user", user)} */}
       <div style={{ marginTop: "100px" }}>
         <div className="grid-profile">
           <div></div>
@@ -294,24 +294,49 @@ const Profile = () => {
           <div className="Left-sideProf" style={{ paddingRight: "40px" }}>
             {user[0]?._id === state.Login.user._id ? (
               <>
-                <h6 style={{ float: "left" , cursor: "pointer" }} onClick={() => setEdit(true)}>
+                <h6
+                  style={{ float: "left", cursor: "pointer" }}
+                  onClick={() => setEdit(true)}
+                >
                   ⚙️
                 </h6>
               </>
             ) : (
               <></>
             )}
-            <h1> {user[0]?.userName}</h1>
+            <h1>الاسم: {user[0]?.userName}</h1>
             <h6>الحاله: {user[0]?.status} </h6>
             <h5 style={{ color: "gray" }}> التصنيف: {user[0]?.specialty}</h5>
             <h4> {user[0]?.bio}</h4>
             <h5>المدينة: {user[0]?.city}</h5>
             <br />
             <h4>:لـلـتـواصـل</h4>
-            <h6> {user[0]?.Email} :الايميل</h6>
-            <h6>{user[0]?.Phone_Number} :رقم الجوال</h6>
+            {/* <h6>  :الايميل</h6> */}
+
+            {/* mailto: */}
+            {/* <i class="fas fa-envelope"></i> */}
+
+            {/* <h6>:رقم الجوال</h6>  */}
+
+            <a
+              href={`https://wa.me/${user[0]?.Phone_Number}`}
+              className="whatsapp_Icons"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className=" fa whatsapp-num">{user[0]?.Phone_Number}</p>
+
+              <i className="fa fa-whatsapp whatsapp-icon"></i>
+            </a>
+
             <br />
-            {state.Login.user.role !== "61c05aad3708bf224ada4791" &&
+            <a href={`mailto:${user[0]?.Email}`} className="email_Icons">
+              <p className="fa em">{user[0]?.Email}</p>
+              <i className="fa fa-envelope"></i>
+            </a>
+            <br />
+
+            {/* {state.Login.user.role !== "61c05aad3708bf224ada4791" &&
             user[0]?._id === state.Login.user._id ? (
               <>
                 <button
@@ -335,7 +360,7 @@ const Profile = () => {
               </button>
             ) : (
               ""
-            )}
+            )} */}
           </div>
           {/* Right */}
           <div className="Right-sideProf">
@@ -345,9 +370,35 @@ const Profile = () => {
               alt="avatarImg"
             ></img>
             <br />
-            {/* <h3>الاسم: {user[0]?.userName}</h3> */}
+            <h3> {user[0]?.userName}</h3>
             <br />
-
+            {state.Login.user.role !== "61c05aad3708bf224ada4791" &&
+            user[0]?._id === state.Login.user._id ? (
+              <>
+                <button
+                className="btnInq"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setAddInquiry(true)}
+                >
+                  اضافة استفسار 
+                </button>
+              </>
+            ) : (
+              ""
+            )}
+          
+            {state.Login.user.role === "61c4375564bde5690cdb68d0" &&
+            user[0]?._id === state.Login.user._id ? (
+              <button
+              className="btnPost"
+                style={{ cursor: "pointer" }}
+                onClick={() => setAddPost(true)}
+              >
+                اضافة مشروع 
+              </button>
+            ) : (
+              ""
+            )}
             <br />
           </div>
           {/*  */}
@@ -363,7 +414,6 @@ const Profile = () => {
           {posts.map((item) => (
             <>
               <div key={item._id}>
-              
                 <img
                   style={{ width: "100%", height: "250px" }}
                   src={item.image}
@@ -383,9 +433,9 @@ const Profile = () => {
                   >
                     x
                   </h1>
-                 ) : (
+                ) : (
                   ""
-                )} 
+                )}
                 <h3
                   className="clickTite"
                   style={{ padding: "40px", cursor: "pointer" }}
@@ -400,11 +450,8 @@ const Profile = () => {
 
                   <button>{item.workingTime}</button>
                 </div>
-                
               </div>
-              
             </>
-            
           ))}
         </div>
         <hr />
@@ -415,7 +462,7 @@ const Profile = () => {
           {inquiry.map((item) => (
             <>
               <div key={item._id}>
-              {state.Login.user.role === "61c05aad3708bf224ada4791" ||
+                {state.Login.user.role === "61c05aad3708bf224ada4791" ||
                 item.user === state.Login.user._id ? (
                   <p
                     style={{
@@ -549,11 +596,15 @@ const Profile = () => {
                         onChange={(e) => setTitle(e.target.value)}
                       />
                       <br />
-                      <button  
-                    className="actionButton" type="submit">اضافه</button>
-                   
-                      <button  style={{ float: "right",  backgroundColor: "gray" }}
-                    className="actionButton" onClick={() => setAddInquiry(false)}>
+                      <button className="actionButton" type="submit">
+                        اضافه
+                      </button>
+
+                      <button
+                        style={{ float: "right", backgroundColor: "gray" }}
+                        className="actionButton"
+                        onClick={() => setAddInquiry(false)}
+                      >
                         الغاء
                       </button>
                     </div>

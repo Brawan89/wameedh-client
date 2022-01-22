@@ -4,9 +4,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import Search from "../search";
+import Swal from "sweetalert2";
+
 
 const Dashboard = () => {
   const [user, setUser] = useState([]);
+  const [userDel, setUserDel] = useState([]);
+
   const navigate = useNavigate();
 
   const state = useSelector((state) => {
@@ -15,6 +19,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getAllUsers();
+    getAUsers();
     // eslint-disable-next-line
   }, []);
 
@@ -32,9 +37,50 @@ const Dashboard = () => {
     setUser(result.data);
   };
 
+  //get all users after block
+  const getAUsers = async () => {
+    console.log("resulttttttttttttttttttt" );
+
+    const resultd = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/users`,
+      {
+        headers: {
+          Authorization: `Bearer ${state.Login.token}`,
+        },
+      }
+    );
+    console.log("result" , resultd);
+    setUserDel(resultd.data);
+  };
+
+  // users
+
   //delete user
   const deleteUsers = async (_id) => {
     // console.log("_id" , _id);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'هل انت متأكد من حذف اليوزر؟',
+      text: "!لن تتمكن من التراجع عن هذا",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'حذف',
+      cancelButtonText: 'الغاء',
+      reverseButtons: true
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'تم الحذف',
+          'تم حذف اليوزر',
+          'success'
+        )
    const result =
       await axios.put(
         `${process.env.REACT_APP_BASE_URL}/delUser/${_id}`,{},
@@ -47,6 +93,17 @@ const Dashboard = () => {
       // console.log("result" , result);
       // deleteUsers();
       getAllUsers(result);
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'الغاء',
+        'اليوزر بأمان (:',
+        'error'
+      )
+    }
+  })
     // } catch (error) {
     //   console.log(error);
     // }
@@ -76,9 +133,8 @@ const Dashboard = () => {
         <div className="grid-containerService">
           {user?.map((item) => (
             <div key={item._id}>
-                          {console.log("item",item)}
 
-               { console.log("user" , item.role.role !== "admin")}
+               {/* { console.log("user" , item.role.role !== "admin")} */}
                {/* {state.Login.user.role === "61c05aad3708bf224ada4791" ? ( */}
                   <p
                     style={{
@@ -96,7 +152,7 @@ const Dashboard = () => {
               <img
                 style={{
                   borderRadius: "50%",
-                  width: "60px",
+                  width: "80px",
                   float: "right",
                   padding: "10px",
                   marginBottom: "20px",
@@ -116,6 +172,55 @@ const Dashboard = () => {
               
               {/* role -> هنا ابغى احط وش نوع اليوزر */}
               <h6 style={{ color: "gray" }}>  {item.email}</h6>
+
+            </div>
+          ))}
+        </div>
+        <br/>
+        <hr/>
+        <br/>
+        <div className="grid-containerService">
+          {userDel.map((itemD) => (
+            <div key={itemD._id}>
+
+               { console.log("user" , itemD)}
+               {/* {state.Login.user.role === "61c05aad3708bf224ada4791" ? ( */}
+                  {/* <p
+                    style={{
+                      fontSize: "25px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => deleteUsers(item._id)}
+                  >
+                    x
+                  </p> */}
+                {/* ) : (
+                  ""
+                )} */}
+
+              <img
+                style={{
+                  borderRadius: "50%",
+                  width: "80px",
+                  float: "right",
+                  padding: "10px",
+                  marginBottom: "20px",
+                }}
+                src={itemD.avatar}
+                alt="avatImg"
+              />
+
+              <h5
+                style={{ padding: "15px", cursor: "pointer" }}
+                onClick={() => navigate(`/profile/${itemD._id}`)}
+              >
+                {itemD.userName}
+              </h5>
+              {/* item.role.role */}
+              <h6 style={{ color: "gray" }}>  {itemD.role.role}</h6>
+              
+              {/* role -> هنا ابغى احط وش نوع اليوزر */}
+              <h6 style={{ color: "gray" }}>  {itemD.email}</h6>
 
             </div>
           ))}
