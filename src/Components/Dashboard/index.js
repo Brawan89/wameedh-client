@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getAllUsers();
-    getAUsers();
+    getUsers();
     // eslint-disable-next-line
   }, []);
 
@@ -38,7 +38,7 @@ const Dashboard = () => {
   };
 
   //get all users after block
-  const getAUsers = async () => {
+  const getUsers = async () => {
     console.log("resulttttttttttttttttttt" );
 
     const resultd = await axios.get(
@@ -110,6 +110,23 @@ const Dashboard = () => {
     // window.location.reload(false);
   };
 
+  // reUser
+  const reUser = async (_id) => {
+    // console.log("_id" , _id);
+   const result =
+      await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/reUser/${_id}`,{},
+        {
+          headers: {
+            Authorization: `Bearer ${state.Login.token}`,
+          },
+        }
+      );
+      // console.log("result" , result);
+      // deleteUsers();
+      getAllUsers(result);
+    
+  };
 
   // search on service provider...
   const searchpages = (e) => {
@@ -180,23 +197,23 @@ const Dashboard = () => {
         <hr/>
         <br/>
         <div className="grid-containerService">
-          {userDel.map((itemD) => (
+          {userDel?.map((itemD) => (
             <div key={itemD._id}>
 
                { console.log("user" , itemD)}
-               {/* {state.Login.user.role === "61c05aad3708bf224ada4791" ? ( */}
-                  {/* <p
+               {state.Login.user.role === "61c05aad3708bf224ada4791" ? (
+                  <p
                     style={{
                       fontSize: "25px",
                       cursor: "pointer",
                     }}
-                    onClick={() => deleteUsers(item._id)}
+                    onClick={() => reUser(itemD._id)}
                   >
-                    x
-                  </p> */}
-                {/* ) : (
+                    ✔️
+                  </p>
+                ) : (
                   ""
-                )} */}
+                )}
 
               <img
                 style={{
