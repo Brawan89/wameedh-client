@@ -1,6 +1,5 @@
 import React from "react";
 import "./style.css";
-import { Link } from "react-router-dom";
 import {
   AiFillFacebook,
   AiOutlineTwitter,
@@ -13,18 +12,18 @@ const Footer = () => {
     <>
       <div className="fulldiv">
         <div className="navStart">
-          <Link to="https://twitter.com/gth495" id="socaialIcons">
+          <a href="https://twitter.com/gth495" id="socaialIcons">
             <AiOutlineTwitter />
-          </Link>
-          <Link to="https://www.instagram.com/?hl=en" id="socaialIcons">
+          </a>
+          <a href="https://www.instagram.com/?hl=en" id="socaialIcons">
             <AiFillInstagram />
-          </Link>
-          <Link to="https://www.facebook.com/" id="socaialIcons">
+          </a>
+          <a href="https://www.facebook.com/" id="socaialIcons">
             <AiFillFacebook />
-          </Link>
-          <Link to="https://github.com/MP-Project-Rawan-Badr" id="socaialIcons">
+          </a>
+          <a href="https://github.com/MP-Project-Rawan-Badr" id="socaialIcons">
             <AiFillGithub />
-          </Link>
+          </a>
         </div>
 
         <h4
@@ -34,7 +33,7 @@ const Footer = () => {
               "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
           }}
         >
-          جميع الحقوق محفوظة لومـيـض - 2021
+          جميع الحقوق محفوظة لومـيـض - 2022
         </h4>
       </div>
     </>

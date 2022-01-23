@@ -146,6 +146,13 @@ const Profile = () => {
     );
     console.log(result.data);
     getOneUser();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'تم التعديل',
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
   // window.location.reload(false);
 
@@ -302,9 +309,7 @@ const Profile = () => {
           },
         }
       );
-      // console.log(result);
-      // setPosts(result.data);
-      // getAllPosts(state.Login.token);
+ 
     }
     Swal.fire("تم اضافة المشروع", "👏 تم اضافة مشروعك بنجاح", "success");
   };
@@ -324,26 +329,13 @@ const Profile = () => {
           },
         }
       );
-      // console.log(result);
-      // setInquiry(result.data);
-
-      // getAllPosts(state.Login.token);
+     
     }
     Swal.fire("تم اضافة سؤالك", "👏 تم اضافة سؤالك بنجاح", "success");
   };
-  //
-  // const [statuss, setStatus] = useState("");
-  // const changeStatus = (e) => {
-  //   setStatus(e.target.value);
-  //   // setSpecialty(e.target.value);
-  // };
-  // useEffect(() => {
-  //   if (statuss) updateUser();
-  // }, [statuss]);
-
+ 
   //
   useEffect(() => {
-    // console.log(state.Login.user._id);
     getOneUser();
     getUserPost();
     getUserInquiry();
@@ -353,7 +345,6 @@ const Profile = () => {
   //
   return (
     <>
-      {/* {console.log("user", user)} */}
       <div style={{ marginTop: "100px" }}>
         <div className="grid-profile">
           <div></div>
@@ -379,12 +370,6 @@ const Profile = () => {
             <h5>المدينة: {user[0]?.city}</h5>
             <br />
             <h4>:لـلـتـواصـل</h4>
-            {/* <h6>  :الايميل</h6> */}
-
-            {/* mailto: */}
-            {/* <i class="fas fa-envelope"></i> */}
-
-            {/* <h6>:رقم الجوال</h6>  */}
 
             <a
               href={`https://wa.me/${user[0]?.Phone_Number}`}
@@ -403,32 +388,6 @@ const Profile = () => {
               <i className="fa fa-envelope"></i>
             </a>
             <br />
-
-            {/* {state.Login.user.role !== "61c05aad3708bf224ada4791" &&
-            user[0]?._id === state.Login.user._id ? (
-              <>
-                <button
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setAddInquiry(true)}
-                >
-                  اضافة استفسار +
-                </button>
-              </>
-            ) : (
-              ""
-            )}
-            <br />
-            {state.Login.user.role === "61c4375564bde5690cdb68d0" &&
-            user[0]?._id === state.Login.user._id ? (
-              <button
-                style={{ cursor: "pointer", marginBottom: "20px" }}
-                onClick={() => setAddPost(true)}
-              >
-                اضافة مشروع +
-              </button>
-            ) : (
-              ""
-            )} */}
           </div>
           {/* Right */}
           <div className="Right-sideProf">
@@ -574,10 +533,9 @@ const Profile = () => {
                     name="text"
                     type="text"
                     className="input-field"
-                    placeholder="عنوان المشروع"
                     onChange={(e) => setTitle(e.target.value)}
                   />
-                  <label className="input-label" htmlFor="email">
+                  <label className="inputabel" htmlFor="email">
                     عنوان المشروع
                   </label>
                 </div>
@@ -587,28 +545,25 @@ const Profile = () => {
                     rows="3"
                     cols="100pm"
                     className="input-field"
-                    placeholder="اضف وصف لمشروعك"
                     onChange={(e) => setDec(e.target.value)}
                   />
-                  <label className="input-label">اكتب وصف لمشروعك</label>
+                  <label className="inputabel">اكتب وصف لمشروعك</label>
                 </div>
                 <div className="input">
                   <input
                     className="input-field"
                     type="number"
-                    placeholder="سعر المشروع"
                     onChange={(e) => setPrice(e.target.value)}
                   />
-                  <label className="input-label">ماهو سعر المشروع؟</label>
+                  <label className="inputabel">ماهو سعر المشروع؟</label>
                 </div>
                 <div className="input">
                   <input
                     className="input-field"
                     type="text"
-                    placeholder="مدة العمل "
                     onChange={(e) => setWorkingTime(e.target.value)}
                   />
-                  <label className="input-label">مدة العمل على المشروع؟</label>
+                  <label className="inputabel">مدة العمل على المشروع؟</label>
                 </div>
                 <div className="input">
                   <input
@@ -618,18 +573,21 @@ const Profile = () => {
                     multiple
                     onChange={handleChange}
                   />
-                  <label className="input-label">اضف صور لمشروعك</label>
+                  <label className="inputabel">اضف صور لمشروعك</label>
                 </div>
-                <progress style={{ width: "80%" }} value={progress} max="100" />
+                <progress style={{ width: "100%" }} value={progress} max="100" />
                 <div>تم تحميل {counter} صورة</div>
-                <div className="actionLogin">
-                  <button
-                    className="actionButton"
-                    style={{ backgroundColor: "grey", margin: "30px" }}
+
+                <button
+                    className="action_Button"
+                    style={{ backgroundColor: "grey" , color: "white" }}
                     onClick={handleUpload}
                   >
                     تحميل الصوره
                   </button>
+               
+                <div className="actionLogin">
+                  
                   <button className="actionButton" onClick={addNewPost}>
                     اضافه
                   </button>
@@ -663,19 +621,20 @@ const Profile = () => {
                         placeholder="ماهو سؤالك؟"
                         onChange={(e) => setTitle(e.target.value)}
                       />
+                      </div>
                       <br />
-                      <button className="actionButton" type="submit">
+                      <button className="action-Button" type="submit">
                         اضافه
                       </button>
 
                       <button
                         style={{ float: "right", backgroundColor: "gray" }}
-                        className="actionButton"
+                        className="action-Button"
                         onClick={() => setAddInquiry(false)}
                       >
                         الغاء
                       </button>
-                    </div>
+                    
                   </form>
                 </div>
               </div>
@@ -798,11 +757,12 @@ const Profile = () => {
                       style={{ marginLeft: "100px", fontSize: "20px" }}
                       onClick={handleUploadAvatar}
                     >
-                      +
+                     تحميل الصوره
                     </button>
                   </div>
                   <div className="action">
-                    <button className="action-button" type="submit">
+                    <button type="submit" className="action-button" 
+                    >
                       حفظ
                     </button>
                     <button
