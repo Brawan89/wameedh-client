@@ -171,129 +171,21 @@ const Post = () => {
             </a>
               </div>
 
-              {/* {item.image.map((img) => (
-                    <h5
-                      style={{
-                        width: "94%",
-                        padding: "30px",
-                        backgroundColor: "white",
-                      }}
-                    >
-                      <img style={{ width: "100%" }} src={img}></img>
-                    </h5>
-                  ))} */}
-
-              {/* <div className="">
-                  <img
-                    style={{ borderRadius: "50%", width: "100px" }}
-                    src={item.user.avatar}
-                    alt="avatarImg"
-                  ></img>
-                  <h5> {item.user.userName}</h5>
-                  <p>{item.user.bio}</p>
-                  <h5 style={{ textAlign: "center" }}>
-                    <AiOutlineInstagram />
-                    <AiOutlineTwitter />
-                    <AiFillFacebook />
-                    <AiOutlineMessage />
-                  </h5>
-                </div> */}
+              
             </>
           ))}
         </div>
 
-        {/* ...................................
-        ......................................
-        ........................................ */}
-        {/* <div className="desPost">
-          {post.map((item) => (
-            <>
-              <div key={item._id}>
-                
-                  {item.user._id == state.Login.user._id ? (
-                    <>
-                      <button
-                        onClick={() => setEdit(true)}
-                        style={{float:"left" , marginLeft: "100px" }}
-                      >
-                        ⚙️
-                      </button>
-                    </>
-                  ) : (
-                    <></>
-                  )} */}
-        {/* <div className="allDec">
-                    <div className="leftSide">
-                      className
-                      <h3> {item.workingTime} مدة العمل</h3>
-                      <img
-                        style={{ borderRadius: "50%" }}
-                        id="avatarPost"
-                        src={item.user.avatar}
-                        alt="avatarImg"
-                      ></img>
-
-                      <h3 style={{ textAlign: "center" }}>
-                        {item.user.userName}
-                      </h3> */}
-
-        {/* </div>
-                    <div className="rightSide">
-                      <h2 style={{ color: "rgb(19,82,139)"}}>
-                        {item.title}
-                      </h2>
-                    
-                      <div className="imgPost">
-                        <img
-                          style={{ width: "600px", height: "400px" }}
-                          name="s"
-                          id="image"
-                          src={item.image[0]}
-                        ></img> */}
-        {/* <h3
-                        className="desc"
-                          style={{ marginRight: "150px", color: "rgb(19,82,139)" , textAlign: "right" }}
-                        >
-                          {item.dec}
-                        </h3>
-                      </div>
-                    </div> */}
-        {/* </div> */}
+       
 
         <br />
-        {/* <div style={{ marginTop: "10px" }} className="allInfoPost"> */}
-        {/* <div className="infoPost"> */}
-        {/* <h2 style={{color: "rgb(19,82,139)" , padding: "10px"}}>{item.title} </h2> */}
-        {/* <h4>{item.title}</h4>
-                      <h3 style={{color: "rgb(19,82,139)" , padding: "10px"}}>:وصف المشروع</h3>
-                      <h3> {item.dec}</h3> */}
-        {/* </div> */}
-
-        {/* <div className="postsImg">
-                    {item.image.map((img) => (
-                      <img className="post" name="s" id="image" src={img}></img>
-                    ))}
-                  </div> */}
-
-        {/* <div className="price-worktime"> */}
-        {/* <h3>السعر {item.price} ريال</h3>
-                    <h3 style={{ paddingLeft: "550px" }}>
-                      {" "}
-                      {item.workingTime} مدة العمل
-                    </h3> */}
-        {/* </div> */}
-        {/* </div>
-              </div> */}
-        {/* </div> */}
-        {/* </>
-          ))}
-        </div> */}
+        
 
         {/* .........................................
         ................................................
         ................................................... */}
         {edit ? (
-          <div style={{ marginTop: "-20px" }} className="edit">
+          <div style={{ marginTop: "-20px" }} className="editP">
             {post.map((item) => (
               // <div className="card">
               <form onSubmit={updatPost}>
