@@ -13,16 +13,16 @@ const Footer = () => {
     <>
       <div className="fulldiv">
         <div className="navStart">
-          <Link to="" id="socaialIcons">
+          <Link to="https://twitter.com/gth495" id="socaialIcons">
             <AiOutlineTwitter />
           </Link>
-          <Link to="" id="socaialIcons">
+          <Link to="https://www.instagram.com/?hl=en" id="socaialIcons">
             <AiFillInstagram />
           </Link>
-          <Link to="" id="socaialIcons">
+          <Link to="https://www.facebook.com/" id="socaialIcons">
             <AiFillFacebook />
           </Link>
-          <Link to="" id="socaialIcons">
+          <Link to="https://github.com/MP-Project-Rawan-Badr" id="socaialIcons">
             <AiFillGithub />
           </Link>
         </div>
