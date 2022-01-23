@@ -152,12 +152,46 @@ const Profile = () => {
   //delete post
   const deletePost = async (id) => {
     try {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'هل انت متأكد من حذف المشروع',
+        text: "!لن تتمكن من التراجع عن هذا",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'حذف',
+        cancelButtonText: 'الغاء',
+        reverseButtons: true
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'تم الحذف',
+            'تم حذف المشروع',
+            'success'
+          )
       await axios.delete(`${process.env.REACT_APP_BASE_URL}/deletePost/${id}`, {
         headers: {
           Authorization: `Bearer ${state.Login.token}`,
         },
       });
       deletePost(state.Login.token);
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'الغاء',
+        'المشروع بأمان (:',
+        'error'
+      )
+    }
+  })
     } catch (error) {
       // console.log(error);
     }
@@ -167,6 +201,29 @@ const Profile = () => {
   //delete inquiry
   const deleteInquiry = async (id) => {
     try {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'هل انت متأكد من حذف الاستفسار',
+        text: "!لن تتمكن من التراجع عن هذا",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'حذف',
+        cancelButtonText: 'الغاء',
+        reverseButtons: true
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'تم الحذف',
+            'تم حذف الاستفسار',
+            'success'
+          )
       await axios.delete(
         `${process.env.REACT_APP_BASE_URL}/deleteInquiry/${id}`,
         {
@@ -176,6 +233,17 @@ const Profile = () => {
         }
       );
       deleteInquiry(state.Login.token);
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'الغاء',
+        'الاستفسار بأمان (:',
+        'error'
+      )
+    }
+  })
     } catch (error) {
       // console.log(error);
     }

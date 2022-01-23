@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 import Search from "../search";
 import Swal from "sweetalert2";
+import {FaRetweet} from "react-icons/fa"
 
 
 const Dashboard = () => {
@@ -39,7 +40,6 @@ const Dashboard = () => {
 
   //get all users after block
   const getUsers = async () => {
-    console.log("resulttttttttttttttttttt" );
 
     const resultd = await axios.get(
       `${process.env.REACT_APP_BASE_URL}/users`,
@@ -209,7 +209,7 @@ const Dashboard = () => {
                     }}
                     onClick={() => reUser(itemD._id)}
                   >
-                    ✔️
+                   < FaRetweet/>
                   </p>
                 ) : (
                   ""
